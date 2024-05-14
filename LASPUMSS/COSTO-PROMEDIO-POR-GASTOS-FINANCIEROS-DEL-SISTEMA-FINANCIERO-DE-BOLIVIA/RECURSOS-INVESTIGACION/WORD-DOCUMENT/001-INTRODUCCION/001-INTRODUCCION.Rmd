@@ -1,0 +1,7 @@
+::: {custom-style="Titulo 1 enum"}
+Introducción 
+:::
+
+El objeto del presente artículo es llevar a cabo la determinación del costo promedio de los gastos financieros del sistema financiero de Bolivia, entendiendo este análisis como una tasa representativa sobre los cargos asociados a la intermediación financiera. Donde se ha llevado a cabo el cálculo de indicadores resultado de la comparación de cuentas contenidas en los estados financieros de cuatro gestiones, de 2020 hasta 2023 con un intervalo mensual, correspondiente a datos públicos de la autoridad de supervisión del sistema financiero ASFI.
+
+La presentación de los resultados encontrados se compone en primer término de los métodos empleados en su elaboración, junto con las precisiones técnicas bajo las cuales se suscribió para su puesta en marcha, dando lugar a la sección principal donde se expone los resultados del análisis de la información obtenida de la autoridad de supervisión del sistema financiero ASFI, los cuales han sido procesados por el lenguaje de programación “R” orientado al análisis de datos, finalizando con la discusión de los resultados contrastado con antecedentes encontrados.

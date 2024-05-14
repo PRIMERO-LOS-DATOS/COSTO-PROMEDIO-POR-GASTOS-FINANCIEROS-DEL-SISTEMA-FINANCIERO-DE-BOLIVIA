@@ -1,0 +1,24 @@
+
+El primer grupo de variables empleado en el presente estudio fueron los denominados como gastos financieros que según @MANUAL_CUENTAS_ASFI, son los “gastos del período provenientes de la actividad de intermediación financiera entre la oferta y demanda de recursos financieros”, específicamente los listados a continuación:
+
+- Cargos por obligaciones con el público (Código 411.00)
+- Cargos por obligaciones con instituciones fiscales (Código 412.00)
+- Cargos por obligaciones con bancos y entidades de financiamiento (Código 413.00)
+- Cargos por cuentas por pagar y comisiones financieras (Código 414.00)
+- Cargos por valores en circulación (Código 415.00)
+- Cargos por obligaciones subordinadas (Código 416.00)
+- Cargos por obligaciones con empresas públicas (Código 417.00)
+
+Por otro lado, dichas partidas de gastos financieros, se pueden vincular o corresponden a partidas de cuentas de pasivos, que representan “obligaciones directas de la entidad” [@MANUAL_CUENTAS_ASFI], que se listan a continuación:
+
+- Obligaciones con el público (Código 210.00)
+- Obligaciones con instituciones fiscales (Código 220.00)
+- Obligaciones con bancos y entidades de financiamiento (Código 230.00)
+- Cuentas por pagar (Código 240.00)
+- Valores en circulación (Código 260.00)
+- Obligaciones subordinadas (Código 270.00)
+- Obligaciones con empresas públicas (Código 280.00)
+
+Donde el costo es representado como la tasa resultante de la comparación de los cargos financieros respecto a la partida de pasivo directamente vinculada, según corresponda a las variables antes presentadas.
+
+$$\text{Costo %} = \frac{ \text{Cargos Financieros} }{ \text{Obligación Vinculada}}$$

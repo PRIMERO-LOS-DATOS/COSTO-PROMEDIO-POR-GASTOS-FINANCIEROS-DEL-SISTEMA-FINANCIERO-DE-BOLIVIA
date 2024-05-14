@@ -1,0 +1,221 @@
+```{r results='hide'}
+rootDirAux <- 'LASPUMSS/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/'
+
+if (dir.exists('ALGOTIMOS-MODELOS/HANDLES')) {
+    sapply( list.files('ALGOTIMOS-MODELOS/HANDLES', full.names=TRUE, pattern='\\.[rR]$'), source )
+} 
+
+if (dir.exists(paste0(rootDirAux, 'R'))) {
+    sapply( list.files( paste0(rootDirAux, 'R'), full.names=TRUE, pattern='\\.[rR]$'), source )
+}
+
+require(patchwork)
+require(dplyr)
+
+accountsStudy <- c('CD_210_00', 'CD_220_00', 'CD_230_00', 
+                   'CD_240_00', 'CD_260_00', 'CD_270_00', 
+                   'CD_280_00',
+                   
+                   'CD_411_00', 'CD_412_00', 'CD_413_00', 
+                   'CD_414_00', 'CD_415_00', 'CD_416_00', 
+                   'CD_417_00',
+                   
+                   'CD_414_01', 'CD_414_02', 'CD_414_03',
+                   'CD_414_10', 'CD_414_11', 'CD_414_12',
+                   'CD_414_99')
+
+
+if (!file.exists(paste0(rootDirAux,'DATA/dataBaseByTotalSistema.xlsx'))) {
+    
+    datTotalSistema <-
+        handles$getDatEstFinNormalizadaAsfi(by = 'TOTAL_SISTEMA', 
+                                            yearInit = 2014, 
+                                            desagregados = TRUE, 
+                                            accounts = accountsStudy) %>% 
+        mutate(TIPO_DE_ENTIDAD = gsub('_', ' ', TIPO_DE_ENTIDAD))
+    
+    openxlsx::write.xlsx(datTotalSistema, paste0(rootDirAux,'DATA/dataBaseByTotalSistema.xlsx'))
+    
+} else{
+    
+    datTotalSistema <- 
+        openxlsx::read.xlsx( paste0(rootDirAux,'DATA/dataBaseByTotalSistema.xlsx') ) 
+    
+    if (is.numeric(datTotalSistema$FECHA)) {
+        
+        datTotalSistema <- 
+            datTotalSistema %>% 
+            mutate(FECHA= openxlsx::convertToDate(FECHA))
+    }
+    
+    
+}
+
+
+datTotalSistema <- 
+    datTotalSistema %>% 
+    mutate(CD_411_00_SOBRE_CD_210_00=CD_411_00/CD_210_00,
+           CD_412_00_SOBRE_CD_220_00=CD_412_00/CD_220_00,
+           CD_413_00_SOBRE_CD_230_00=CD_413_00/CD_230_00,
+           CD_414_00_SOBRE_CD_240_00=CD_414_00/CD_240_00,
+           CD_415_00_SOBRE_CD_260_00=CD_415_00/CD_260_00,
+           CD_416_00_SOBRE_CD_270_00=CD_416_00/CD_270_00,
+           CD_417_00_SOBRE_CD_280_00=CD_417_00/CD_280_00)
+
+
+datIdsNamesForPlots <- 
+    openxlsx::read.xlsx( paste0(rootDirAux,'ASSETS/datIdsNamesForPlots.xlsx') )
+
+datIdsNamesForTablesStats <- 
+    openxlsx::read.xlsx( paste0(rootDirAux,'ASSETS/datIdsNamesForTablesStats.xlsx') )
+
+```
+
+
+```{r}
+ids <- c(accountsStudy, 
+         'CD_411_00_SOBRE_CD_210_00',
+         'CD_412_00_SOBRE_CD_220_00',
+         'CD_413_00_SOBRE_CD_230_00',
+         'CD_414_00_SOBRE_CD_240_00',
+         'CD_415_00_SOBRE_CD_260_00',
+         'CD_416_00_SOBRE_CD_270_00',
+         'CD_417_00_SOBRE_CD_280_00')
+listResult <- handles$getListStatsOverviewByIdsNames(ids = ids, 
+                                                   datNorm = datTotalSistema, 
+                                                   datIdsNames = datIdsNamesForTablesStats)
+```
+
+
+```{r}
+id <- 'CD_415_00_SOBRE_CD_260_00'
+assign( paste0('nameIndById_', id), listResult[[id]][['nameIndById']])
+
+assign( paste0('nameEntBestPromedio_', id), 
+        listResult[[id]][['datTrendInd']] %>% 
+            slice_min(PROMEDIO) %>% 
+            select(TIPO_DE_ENTIDAD) %>% 
+            pull() )
+
+assign( paste0('bestPromedio_', id), 
+        listResult[[id]][['datTrendInd']] %>% 
+            slice_min(PROMEDIO) %>% 
+            select(PROMEDIO) %>% 
+            pull() )
+
+id <- 'CD_417_00_SOBRE_CD_280_00'
+assign( paste0('nameIndById_', id), listResult[[id]][['nameIndById']])
+
+assign( paste0('nameEntBestPromedio_', id), 
+        listResult[[id]][['datTrendInd']] %>% 
+            slice_min(PROMEDIO) %>% 
+            select(TIPO_DE_ENTIDAD) %>% 
+            pull() )
+
+assign( paste0('bestPromedio_', id), 
+        listResult[[id]][['datTrendInd']] %>% 
+            slice_min(PROMEDIO) %>% 
+            select(PROMEDIO) %>% 
+            pull() )
+```
+
+
+# Resultados 
+
+Ahora bien, se presentan los resultados encontrados:
+
+```{r, fig.id='resultados001Figura', fig.cap='Ratios de sub partidas de gastos financieros, respecto a pasivos correspondientes del periodo 2020-01-28 a 2023-12-28',  fig.width=6.02, fig.height=7.33}
+ids <- c('CD_411_00_SOBRE_CD_210_00',
+         'CD_412_00_SOBRE_CD_220_00',
+         'CD_413_00_SOBRE_CD_230_00',
+         'CD_414_00_SOBRE_CD_240_00',
+         'CD_415_00_SOBRE_CD_260_00',
+         'CD_416_00_SOBRE_CD_270_00',
+         'CD_417_00_SOBRE_CD_280_00')
+listPlots <- handles$getListPlotsAccoounts(listResult = listResult,
+                                           ids = ids,
+                                           datIdsNames = datIdsNamesForPlots)
+p <- wrap_plots(listPlots, ncol = 1)
+handles$renderPlotBasic(p, width = 10, height = 15)
+```
+
+::: {custom-style="NotasTablasImagenes"}
+Fuente: Elaboración propia.
+:::
+
+
+```{r, fig.id='resultados002Figura', fig.cap='Obligaciones con empresas públicas, obligaciones con el público, valores en circulación, intereses oficina central - sucursales y comisiones oficina central y sucursales, correspondientes al periodo 2020-01-28 a 2023-12-28',  fig.width=6.02, fig.height=7.4}
+ids <- c('CD_280_00',
+         'CD_210_00',
+         'CD_260_00',
+         'CD_414_02',
+         'CD_414_03')
+
+listPlots <- handles$getListPlotsAccoounts(listResult = listResult,
+                                           ids = ids,
+                                           datIdsNames = datIdsNamesForPlots,
+                                           legend_element_text = 14,
+                                           x_y_element_text = 14)
+p <- wrap_plots(listPlots, ncol = 1)
+handles$renderPlotBasic(p, width = 10, height = 15)
+```
+
+::: {custom-style="NotasTablasImagenes"}
+Fuente: Elaboración propia.
+:::
+
+
+\newpage
+
+```{r, tab.id='resultados001Tabla', tab.cap='Costo promedio de sub partidas de gastos financieros, respecto a pasivos correspondientes del periodo 2020-01-28 a 2023-12-28'}
+ids <- c(
+         'CD_411_00_SOBRE_CD_210_00',
+         'CD_412_00_SOBRE_CD_220_00',
+         'CD_413_00_SOBRE_CD_230_00',
+         'CD_414_00_SOBRE_CD_240_00',
+         'CD_415_00_SOBRE_CD_260_00',
+         'CD_416_00_SOBRE_CD_270_00',
+         'CD_417_00_SOBRE_CD_280_00')
+
+listTableStats <- 
+    handles$renderListTablesAccountsWordDocument(listResult = listResult, 
+                                                 nSepEnt = 1, 
+                                                 fontSize = 10,
+                                                 ids = ids, 
+                                                 colNamesRender = c('TIPO_DE_ENTIDAD',
+                                                                    'PROMEDIO',
+                                                                    'DESVIACION',
+                                                                    'COEFICIENTE_DE_VARIACION',
+                                                                    'TENDENCIA_MCO',
+                                                                    'PROBABILIDAD_T_TENDENCIA_MCO'),
+                                                 changeColNamesRender = c('TIPO_DE_ENTIDAD',
+                                                                          'PROMEDIO',
+                                                                          'DESVIACION',
+                                                                          'CV',
+                                                                          'TENDENCIA',
+                                                                          'P(t)') )
+listTableStats
+```
+
+::: {custom-style="NotasTablasImagenes"}
+Fuente: Elaboración propia.
+:::
+
+Donde se resalta lo siguiente:
+
+- Los cargos generados por valores en circulación en promedio representan un mayor costo para las entidades financieras de Bolivia, que hacienden al `r round(bestPromedio_CD_415_00_SOBRE_CD_260_00*100, 2)`% mensual, en contraposición de los cargos generados por recursos provenientes de obligaciones con empresas públicas, que en promedio representa `r round(bestPromedio_CD_417_00_SOBRE_CD_280_00*100, 2)`% mensual, es decir, que los recursos provenientes por parte del estado representan en promedio un menor costo financiero.
+
+Así también, se debe denotar como posibles causas tentativas de estos resultados al incremento considerable en las partidas listadas a continuación:
+
+- La partida de valores en circulación, que comprenden “las obligaciones por valores de deuda emitidos y colocados por la entidad” [@MANUAL_CUENTAS_ASFI], **registran un incremento súbito durante el desarrollo de la gestión 2020**.
+
+- Las obligaciones con empresas públicas, que representa “los fondos recibidos en depósito y otros tipos de obligaciones con empresas en las cuales el Estado tenga participación” [@MANUAL_CUENTAS_ASFI], **registran un incremento considerable en la gestión 2023**.
+
+- En contraposición las obligaciones con el público, que representan “los fondos recibidos en depósito y otros tipos de obligaciones con el público en general” [@MANUAL_CUENTAS_ASFI], **registra decrementos considerables en la gestión 2023**.
+
+- Los cargos por cuentas por pagar y comisiones financieras, que representan “los cargos devengados en el período por concepto de primas, premios, intereses” [@MANUAL_CUENTAS_ASFI], **registra un incremento considerable puntual en la gestión 2023**, vinculado a variaciones en “intereses oficina central y sucursales” junto a “comisiones oficina central y sucursales”.
+
+Respecto al incremento considerable en obligaciones con empresas públicas, se encontró como antecedente posiblemente vinculado a un crédito concedido al estado en periodos paralelos:
+
+"En la sesión 137° de la Cámara Diputados fue aprobado en su estación en grande, el proyecto de ley N°268/2022-2023 que canaliza un crédito de 52 millones de dólares financiados por el Banco Interamericano de Desarrollo (BID), para ser invertidos en proyectos productivos que benefician a diferentes regiones del país. La aprobación se dio en una maratónica sesión de alrededor de 20 horas, debido a que su tratamiento inició a las 10.00 de ayer miércoles y concluyó hoy pasadas las 6 de la mañana. Posterior a la aprobación en grande de este proyecto de ley, la Cámara de Diputados realizó un análisis y debatió el mismo en su estación en detalle, no siendo aprobado por dos votos de diferencia, con 55 votos a favor y 57 en contra" [@CAMARA-DIPUTADOS-BOLIVIA-WEB].
+
