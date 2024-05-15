@@ -32,7 +32,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       fig.cap = TRUE,
                       dpi=700)
 
-rootProyectMain <- 'LASPUMSS/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/RECURSOS-INVESTIGACION/WORD-DOCUMENT/'
+rootProyectMain <- 'LASPUMSS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/RECURSOS-INVESTIGACION/WORD-DOCUMENT/'
 knitr::opts_knit$set(root.dir = getwd())
 options(scipen=999)
 
@@ -79,3 +79,5 @@ ps <- officer::prop_section(
 <!-- ANEXOS -->
 ```{r, child=paste0(rootProyectMain,"006-ANEXOS/006-ANEXOS.Rmd")}
 ```
+
+

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = FALSE,
                       fig.align = "center",
                       dpi=700)
 
-rootProyectMain <- 'LASPUMSS/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/RECURSOS-INVESTIGACION/HTML-DOCUMENT/'
+rootProyectMain <- 'LASPUMSS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/RECURSOS-INVESTIGACION/HTML-DOCUMENT/'
 
 ```
 
@@ -34,8 +34,8 @@ rootProyectMain <- 'LASPUMSS/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCI
 El presente artículo se constituye o tiene como objeto principal la difusión de resultados de investigaciones y ensayos académicos, para la replicación de la información presentada se adjunta los descargos correspondientes:
 
 - Repositorio GitHub ([Click Aqui](https://github.com/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA))
-- Documento Microsoft Word ([Click Aqui](#))
-
+- Documento Microsoft Word ([Click Aqui](https://github.com/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/raw/main/LASPUMSS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/PRINCIPAL-ARTICULO-WORD.docx))
+- Documento PDF ([Click Aqui](#))
 
 ## METODOS
 
