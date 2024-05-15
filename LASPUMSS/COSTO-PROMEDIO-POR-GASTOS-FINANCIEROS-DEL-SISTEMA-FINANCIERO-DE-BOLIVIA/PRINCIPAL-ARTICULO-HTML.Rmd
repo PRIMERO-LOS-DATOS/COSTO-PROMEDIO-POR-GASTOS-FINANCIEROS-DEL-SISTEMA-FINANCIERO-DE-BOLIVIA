@@ -33,9 +33,9 @@ rootProyectMain <- 'LASPUMSS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-F
 
 El presente artículo se constituye o tiene como objeto principal la difusión de resultados de investigaciones y ensayos académicos, para la replicación de la información presentada se adjunta los descargos correspondientes:
 
-- Repositorio GitHub ([Click Aqui](https://github.com/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA))
-- Documento Microsoft Word ([Click Aqui](https://github.com/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/raw/main/LASPUMSS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/PRINCIPAL-ARTICULO-WORD.docx))
-- Documento PDF ([Click Aqui](#))
+- Repositorio GitHub (<a href="https://github.com/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA" target="_blank">Clic Aquí</a>) 
+- Documento Microsoft Word ([Clic Aquí](https://github.com/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/raw/main/LASPUMSS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/PRINCIPAL-ARTICULO-WORD.docx))
+- Documento PDF (<a href="https://github.com/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/blob/main/LASPUMSS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/PRINCIPAL-ARTICULO-WORD.pdf" target="_blank">Clic Aquí</a>) 
 
 ## METODOS
 
