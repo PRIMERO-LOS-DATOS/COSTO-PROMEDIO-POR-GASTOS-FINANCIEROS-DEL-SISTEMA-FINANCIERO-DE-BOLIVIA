@@ -5,11 +5,10 @@
 - [Informe final (Arvivo pdf)](https://github.com/PRIMERO-LOS-DATOS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/blob/main/LASPUMSS/COSTO-PROMEDIO-POR-GASTOS-FINANCIEROS-DEL-SISTEMA-FINANCIERO-DE-BOLIVIA/PRINCIPAL-ARTICULO-WORD.pdf)
 
 
-This work is licensed under a
-[Creative Commons Attribution 4.0 International License][cc-by].
+Este trabajo está bajo licencia 
+[Creative Commons Attribution 4.0 International License][cc-by-nc].
 
-[![CC BY 4.0][cc-by-image]][cc-by]
+[![CC BY NC 4.0][cc-by-nc-image]][cc-by-nc]
 
-[cc-by]: http://creativecommons.org/licenses/by/4.0/
-[cc-by-image]: https://i.creativecommons.org/l/by/4.0/88x31.png
-[cc-by-shield]: https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg
+[cc-by-nc]: https://creativecommons.org/licenses/by-nc/4.0/
+[cc-by-nc-image]: https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-nc.png
